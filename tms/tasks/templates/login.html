@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "login.css" %}">
+</head>
+<body>
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <form class="form" method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="control">
+                      <h1>Welcome Back!</h1>
+                    </div>
+                    <div class="control block-cube block-input">
+                      <input name="username" id="username" placeholder="Username" />
+                      <div class="bg-top">
+                        <div class="bg-inner"></div>
+                      </div>
+                      <div class="bg-right">
+                        <div class="bg-inner"></div>
+                      </div>
+                      <div class="bg">
+                        <div class="bg-inner"></div>
+                      </div>
+                    </div>
+                    <div class="control block-cube block-input">
+                      <input name="password" id="password" type="password" placeholder="Password" />
+                      <div class="bg-top">
+                        <div class="bg-inner"></div>
+                      </div>
+                      <div class="bg-right">
+                        <div class="bg-inner"></div>
+                      </div>
+                      <div class="bg">
+                        <div class="bg-inner"></div>
+                      </div>
+                    </div>
+                    <button class="btn block-cube block-cube-hover" type="submit">
+                        <div class="bg-top">
+                          <div class="bg-inner"></div>
+                        </div>
+                        <div class="bg-right">
+                          <div class="bg-inner"></div>
+                        </div>
+                        <div class="bg">
+                          <div class="bg-inner"></div>
+                        </div>
+                        <div class="text">Log In</div>
+                    </button>
+                    <a href="{% url 'register' %}">
+                        <button class="btn register-btn block-cube block-cube-hover" type="button">
+                            <div class="bg-top">
+                                <div class="bg-inner"></div>
+                            </div>
+                            <div class="bg-right">
+                                <div class="bg-inner"></div>
+                            </div>
+                            <div class="bg">
+                                <div class="bg-inner"></div>
+                            </div>
+                            <div class="text">Register</div>
+                        </button>
+                    </a>
+                  </form>
+            </div>	
+        </div>
+    </div>
+    </body>
+</html>

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "login.css" %}">
+    <title>Register</title>
+</head>
+
+<body>
+    <form class="form" method="post" action="{% url 'register' %}">
+        {% csrf_token %}
+        <div class="container">
+            <div class="screen">
+                <div class="screen__content">
+                    <form class="form" autocomplete="off">
+                        <div class="control">
+                            <h1>Create an Account</h1>
+                        </div>
+                        <div class="control block-cube block-input">
+                            <label for="{{ form.username.id_for_label }}">Username:</label>
+                            {{ form.username }}
+                        </div>
+                        <div class="control block-cube block-input">
+                            <label for="{{ form.password1.id_for_label }}">Password:</label>
+                            {{ form.password1 }}
+                        </div>
+                        <div class="control block-cube block-input">
+                            <label for="{{ form.password2.id_for_label }}">Password confirmation:</label>
+                            {{ form.password2 }}
+                        </div>
+                        <button type="submit" class="btn block-cube block-cube-hover">
+                            <div class="bg-top">
+                                <div class="bg-inner"></div>
+                            </div>
+                            <div class="bg-right">
+                                <div class="bg-inner"></div>
+                            </div>
+                            <div class="bg">
+                                <div class="bg-inner"></div>
+                            </div>
+                            <div class="text">Register</div>
+                        </button>
+                        <p>Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

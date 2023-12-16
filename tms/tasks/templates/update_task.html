@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Update Task{% endblock %}
+
+{% block content %}
+  <h2>Update Task</h2>
+  <form method="post" action="">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="button-update button-update:hover" type="submit">Update Task</button>
+  </form>
+{% endblock %}

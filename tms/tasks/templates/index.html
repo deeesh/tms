@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}DashBoard{% endblock %}
+
+{% block content %}
+    <div class="task-list-container">
+        <h2>Welcome to your Dashboard
+            <div class="logout-container">
+                <a href="{% url 'logout' %}">Logout</a>
+            </div>
+        </h2>
+        <a href="{% url 'create_task' %}">
+            <button class="control btn block-cube block-cube-hover" type="button">
+                <div class="bg-top">
+                    <div class="bg-inner"></div>
+                </div>
+                <div class="bg-right">
+                    <div class="bg-inner"></div>
+                </div>
+                <div class="bg">
+                    <div class="bg-inner"></div>
+                </div>
+                <div class="text">Create Task</div>
+            </button>
+        </a>
+        <div class="task-list">
+            {% if task_list %}
+            <div class="task-item headings">
+                <div class="block-cube block-heading">Title |</div>
+                <div class="block-cube block-heading">Description |</div>
+                <div class="block-cube block-heading">Completion |</div>
+                <div class="block-cube block-heading">Created At |</div>
+                <div class="block-cube block-heading">Updated At |</div>
+                <div class="block-cube block-heading">Assigned To |</div>
+                <div class="block-cube block-heading">Status</div>
+            </div>
+                {% for task in task_list %}
+                    <div class="task-item">
+                        <h3>{{ task.title }}</h3>
+                        <h4><a href="{% url 'view_task_description' task.id %}"><button class="button-update button-update:hover">Description</button></a></h4>
+                        <h4>{{ task.completed}} </h4>
+                        <h4>({{task.created_at}}) </h4>
+                        <h4>({{task.updated_at}}) </h4>
+                        <h4>({{task.assigned_to}}) </h4>
+                        <h4>{{task.status}}</h4>
+                        <a href="{% url 'update_task' task.id %}"><button class="button-update button-update:hover">Update</button></a>
+                        <form method="post" action="{% url 'mark_task_completed' task.id %}">
+                            {% csrf_token %}
+                            <label>
+                                <input type="checkbox" name="completed" {% if task.completed %}checked{% endif %} onchange="this.form.submit()">
+                                Completed
+                            </label>
+                        </form>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No tasks available.</p>
+            {% endif %}
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if task_list.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ task_list.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ task_list.number }} of {{ task_list.paginator.num_pages }}.
+                    Showing {{ task_list.start_index }} - {{ task_list.end_index }} of {{ task_list.paginator.count }} tasks.
+                </span>
+
+                {% if task_list.has_next %}
+                    <a href="?page={{ task_list.next_page_number }}">next</a>
+                    <a href="?page={{ task_list.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+{% endblock %}

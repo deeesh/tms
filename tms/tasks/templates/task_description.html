@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Description{% endblock %}
+
+{% block content %}
+    <div class="task-list-container">
+        <h2>Description for {{task.title}}</h2>
+        <div class="task-list">
+            {% if task %}
+                <div>{{task.description}}</div>
+            {% else %}
+                <p>No tasks available.</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
