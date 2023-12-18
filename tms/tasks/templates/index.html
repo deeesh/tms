@@ -37,7 +37,8 @@
                 {% for task in task_list %}
                     <div class="task-item">
                         <h3>{{ task.title }}</h3>
-                        <h4><a href="{% url 'view_task_description' task.id %}"><button class="button-update button-update:hover">Description</button></a></h4>
+                        <h4><a href="{% url 'view_task_description' task.id %}">
+                            <button class="button-update button-update:hover">Description</button></a></h4>
                         <h4>{{ task.completed}} </h4>
                         <h4>({{task.created_at}}) </h4>
                         <h4>({{task.updated_at}}) </h4>
