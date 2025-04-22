@@ -111,24 +111,29 @@ WSGI_APPLICATION = 'tms.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'tms_db',
+#         'USER': 'dipti',
+#         'PASSWORD': '123',
+#         'HOST': 'localhost',
+#         'PORT': '5432',
 #     }
 # }
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tms_db',
-        'USER': 'dipti',
-        'PASSWORD': '123',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'tms_db_1wrv',
+        'USER': 'tms_db_1wrv_user',
+        'PASSWORD': 'tWdZNZ0i0P1HXlhZAoVqLuIQ8tdbAFPz',
+        'HOST': 'dpg-d03pb4juibrs73agmui0-a.oregon-postgres.render.com',
         'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
