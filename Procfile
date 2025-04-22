@@ -1,1 +1,1 @@
-web: gunicorn tms.wsgi:application
+web: gunicorn tms.wsgi:application --chdir tms
